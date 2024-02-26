@@ -1,0 +1,33 @@
+# Arquivos de log
+logs
+*.log
+
+# Arquivos temporários
+tmp
+*.tmp
+
+# Arquivos de compilação
+*.o
+*.obj
+*.a
+*.pyc
+*.so
+*.dll
+*.exe
+
+# Dependências do Node.js
+node_modules
+
+# package-lock.json é gerado pelo npm quando você executar npm install sem o --no-shrinkwrap flag.
+package-lock.json
+
+# Arquivos de build do Docker
+docker-compose.override.yml
+.dockerignore
+
+# Outros arquivos e diretórios gerados
+.DS_Store
+Thumbs.db
+
+# Vscode settings
+.vscode/*
