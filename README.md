@@ -1,28 +1,21 @@
-# Roadmap para Desenvolvimento de uma API REST com Docker e Node.js
+Roadmap for Development of a REST API with Docker and Node.js
+This is a simple, open source project that aims to create a RESTful API using the Node.js framework, in conjunction with Docker
 
-Esse é um projeto simples e open source que visa criar uma API RESTful utilizando o framework do Node.js, em conjunto com Docker 
-
-## Tecnologias Utilizadas
-
-- **Node.js**: Plataforma para execução de código JavaScript do lado do servidor.
-- **Express.js**: Framework web para Node.js utilizado para criar APIs RESTful de forma rápida e fácil.
-- **Docker**: Plataforma de código aberto que facilita a criação, o gerenciamento e a execução de aplicativos em contêineres.
-- **Jest**: Framework de testes de JavaScript que é utilizado para escrever e executar testes unitários.
-- **Supertest**: Biblioteca utilizada para testar APIs HTTP/s de forma simples e concisa.
-
-## Configuração do Ambiente
-
-### 1.1 Instalação do Docker
-- Instale o Docker em sua máquina, caso ainda não tenha feito.
-- Verifique se o Docker está funcionando corretamente executando `docker --version` e `docker-compose --version`.
-
-### 1.2 Configuração do Projeto
-- Crie uma pasta para o projeto da API.
-- Dentro da pasta, crie os arquivos necessários para o projeto.
-
-## Passo 2: Desenvolvimento da API REST com Node.js
-### 2.1 index.js
-```javascript
+Technologies Used
+Node.js : Platform for executing server-side JavaScript code.
+Express.js : Web framework for Node.js used to create RESTful APIs quickly and easily.
+Docker : Open source platform that makes it easy to build, manage, and run containerized applications.
+Jest : JavaScript testing framework that is used to write and run unit tests.
+Supertest : Library used to test HTTP/s APIs in a simple and concise way.
+Environment Setting
+1.1 Docker installation
+Install Docker on your machine if you haven't already.
+Verify that Docker is working correctly by running docker --versionand docker-compose --version.
+1.2 Project Configuration
+Create a folder for the API project.
+Inside the folder, create the files needed for the project.
+Step 2: Development of the REST API with Node.js
+2.1 index.js
 const express = require('express');
 const routes = require('./routes'); // Importa as rotas do arquivo routes.js
 
@@ -40,10 +33,7 @@ app.use('/', routes);
 app.listen(PORT, HOST, () => {
     console.log(`Server is running on http://${HOST}:${PORT}`);
 });
-```
-
-### 2.2 routes.js
-```javascript
+2.2 routes.js
 const express = require('express');
 const routes = require('./routes');
 
@@ -65,10 +55,7 @@ if (require.main === module) {
       console.log(`Server is running on http://${HOST}:${PORT}`);
   });
 }
-```
-
-### 2.3 package.json
-```json
+2.3 package.json
 {
   "name": "node",
   "version": "1.0.0",
@@ -85,10 +72,7 @@ if (require.main === module) {
     "nodemon": "^3.1.0"
   }
 }
-```
-
-### 2.4 Dockerfile
-```Dockerfile
+2.4 Dockerfile
 // Define a imagem base como node:alpine
 FROM node:alpine
 
@@ -109,10 +93,7 @@ EXPOSE 3000
 // Define o comando padrão a ser executado quando o contêiner for iniciado
 // Neste caso, é o comando `npm start` para iniciar o servidor Node.js
 CMD ["npm", "start"]
-```
-
-### 2.5 docker-compose.yml
-```yaml
+2.5 docker-compose.yml
 version: '3'
 
 services:
@@ -132,39 +113,26 @@ services:
     // Permitindo que as alterações no código local sejam refletidas no contêiner sem a necessidade de reconstruí-lo
     volumes:
       - .:/usr/app
-```
-
-### 2.6 .dockerignore
-```Copy code
+2.6 .dockerignore
 // Especifica os arquivos e diretórios que devem ser ignorados durante a construção do contêiner Docker
 // Neste caso, o diretório node_modules será ignorado para evitar a cópia desnecessária de dependências do Node.js
 // Já que elas serão instaladas dentro do contêiner
 node_modules
-```
-
-## Passo 3: Build e Execução do Contêiner Docker
-### 3.1 Construção do Contêiner Docker
-- Execute o seguinte comando na raiz do projeto para construir o contêiner Docker:
-```Copy code
+Step 3: Build and Run the Docker Container
+3.1 Docker Container Construction
+Run the following command from the project root to build the Docker container:
 docker-compose build
-```
-
-### 3.2 Execução do Contêiner Docker
-- Após a construção bem-sucedida, inicie o contêiner Docker com o seguinte comando:
-```Copy code
+3.2 Running the Docker Container
+After successful build, start the Docker container with the following command:
 docker-compose up
-```
-
-### 3.3 Teste da API
-- Acesse a API em seu navegador ou utilize ferramentas como Postman para testar os endpoints. 
-- A URL base da API será `http://localhost:3000`.
-
-## Passo 4: Desenvolvimento Adicional e Manutenção
-### 4.1 Desenvolvimento de Novos Recursos 
-- Adicione novos endpoints e funcionalidades à sua API no arquivo `index.js`. 
-- Execute `docker-compose up --build` sempre que fizer alterações no código para reconstruir o contêiner Docker.
-
-### 4.2 Manutenção 
-- Mantenha suas dependências atualizadas no arquivo `package.json`.
-- Monitore e gerencie os logs da aplicação para identificar possíveis problemas.
-- Realize backups regulares dos dados, se aplicável.
+3.3 Yes API tests
+Access the API in your browser or use tools like Postman to test endpoints.
+The base URL of the API will be http://localhost:3000.
+Step 4: Further Development and Maintenance
+4.1 Development of New Resources
+Add new endpoints and functionality to your API in the index.js.
+Run docker-compose up --buildwhenever you make code changes to rebuild the Docker container.
+4.2 Maintenance
+Keep your dependencies updated in the package.json.
+Monitor and manage application logs to identify potential issues.
+Perform regular data backups, if applicable.
